@@ -7,7 +7,6 @@ on:
 jobs: 
   build:
    runs_on: ubuntu_latest
-
    steps:
        - name: checkout src code
          uses: actions/checkout@v6
