@@ -20,8 +20,8 @@ jobs:
         uses: actions/checkout@v4
 
   build:
-    depends_on: checkout
-    runs-on: ubuntu_latest
+    needs: checkout
+    runs-on: ubuntu-latest
       
     steps:  
       - name: Java installation
