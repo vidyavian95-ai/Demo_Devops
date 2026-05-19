@@ -12,13 +12,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  checkout:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout src code
         uses: actions/checkout@v4
 
+  build:
+    runs_on: ubuntu_latest
+      
+    steps:  
       - name: Java installation
         uses: actions/setup-java@v4
         with:
