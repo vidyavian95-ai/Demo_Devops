@@ -36,6 +36,9 @@ jobs:
           name: bookstore_api_src_code
           path: bookstoreapi
 
+      - name: verify dir
+        run: ls-lrt
+
       - name: Java installation
         uses: actions/setup-java@v4
         with:
