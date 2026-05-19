@@ -8,7 +8,7 @@ jobs:
   build:
    runs_on: ubuntu_latest
 
-steps:
+   steps:
        - name: checkout src code
          uses: actions/checkout@v6
 
@@ -19,8 +19,8 @@ steps:
             java-version: '21'
             cache: 'maven'
 
-        - name: maven build
-          run:  mvn -B install --file pom.xml
+       - name: maven build
+         run:  mvn -B install --file pom.xml
 
         - name: upload artifact
           uses: actions/upload-artifact@v7
