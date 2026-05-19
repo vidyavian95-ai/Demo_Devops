@@ -24,13 +24,15 @@ jobs:
     runs-on: ubuntu-latest
       
     steps:  
+      - name: Checkout src code
+        uses: actions/checkout@v4
       - name: Java installation
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: './pom.xml'
+          cache-dependency-path: '${WORKSPACE}/pom.xml'
 
       - name: Maven build
         run: mvn -B install --file pom.xml
