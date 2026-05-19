@@ -30,6 +30,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
+          cache-dependency-path: './pom.xml'
 
       - name: Maven build
         run: mvn -B install --file pom.xml
