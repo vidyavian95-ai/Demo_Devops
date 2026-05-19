@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: bookstore_api_src_code
-          path: bookstoreapi
+          path: .
 
   build:
     needs: checkout
@@ -37,7 +37,7 @@ jobs:
           path: bookstoreapi
 
       - name: verify dir
-        run: ls -lrt && cd ./bookstoreapi && pwd && ls -lrt
+        run: ls -lrt && pwd
 
       - name: Java installation
         uses: actions/setup-java@v4
@@ -45,7 +45,7 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: './bookstoreapi/pom.xml'
+      #    cache-dependency-path: './bookstoreapi/pom.xml'
 
       - name: Maven build
         run: mvn -B install --file pom.xml
