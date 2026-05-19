@@ -1,0 +1,29 @@
+name: java build pipeline
+on:
+  push: [ main ]
+  pull_request: [ main ]
+  workflow_dispatch:
+
+jobs: 
+  build:
+   runs_on: ubuntu_latest
+
+   steps:
+       - name: checkout src code
+         uses: actions/checkout@v6
+
+       - name: java installation
+         uses: actions/setup-java@v5
+         with:
+            distribution: 'temurin'
+            java-version: '21'
+            cache: 'maven'
+
+        - name: maven build
+          run:  mvn -B install --file pom.xml
+
+        - name: upload artifact
+          uses: actions/upload-artifact@v7
+          with:
+             name: bookstore_api
+             path: .
