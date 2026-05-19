@@ -19,13 +19,22 @@ jobs:
       - name: Checkout src code
         uses: actions/checkout@v4
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bookstore_api_src_code
+          path: bookstoreapi
+
   build:
     needs: checkout
     runs-on: ubuntu-latest
       
     steps:  
-      - name: Checkout src code
-        uses: actions/checkout@v4
+      - name: download src code
+        uses: actions/download-artifact@v8
+        with:
+          name: bookstoreapi
+          path: .
       - name: Java installation
         uses: actions/setup-java@v4
         with:
