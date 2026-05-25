@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Book.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Book Store API</a> &gt; <a href="index.source.html" class="el_package">com.bookstoreapi.entity</a> &gt; <span class="el_source">Book.java</span></div><h1>Book.java</h1><pre class="source lang-java linenums">package com.bookstoreapi.entity;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
+/**
+ * Book entity.
+ */
+@Entity
+public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String title;
+
+    @ManyToOne
+    private Author author;
+
+    private String description;
+
+    private String genre;
+
+    private String publicationDate;
+
+    private String price;
+
+    /**
+     * Default constructor.
+     */
+<span class="fc" id="L35">    public Book() {</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Parameterized constructor.
+     *
+     * @param idValue book id
+     * @param titleValue book title
+     * @param authorValue author object
+     * @param descriptionValue description
+     * @param genreValue genre
+     * @param publicationDateValue publication date
+     * @param priceValue book price
+     */
+    public Book(
+            final Long idValue,
+            final String titleValue,
+            final Author authorValue,
+            final String descriptionValue,
+            final String genreValue,
+            final String publicationDateValue,
+<span class="fc" id="L56">            final String priceValue) {</span>
+
+<span class="fc" id="L58">        this.id = idValue;</span>
+<span class="fc" id="L59">        this.title = titleValue;</span>
+<span class="fc" id="L60">        this.author = authorValue;</span>
+<span class="fc" id="L61">        this.description = descriptionValue;</span>
+<span class="fc" id="L62">        this.genre = genreValue;</span>
+<span class="fc" id="L63">        this.publicationDate = publicationDateValue;</span>
+<span class="fc" id="L64">        this.price = priceValue;</span>
+<span class="fc" id="L65">    }</span>
+
+    public Long getId() {
+<span class="fc" id="L68">        return id;</span>
+    }
+
+    public void setId(final Long idValue) {
+<span class="fc" id="L72">        this.id = idValue;</span>
+<span class="fc" id="L73">    }</span>
+
+    public String getTitle() {
+<span class="fc" id="L76">        return title;</span>
+    }
+
+    public void setTitle(final String titleValue) {
+<span class="fc" id="L80">        this.title = titleValue;</span>
+<span class="fc" id="L81">    }</span>
+
+    public Author getAuthor() {
+<span class="nc" id="L84">        return author;</span>
+    }
+
+    public void setAuthor(final Author authorValue) {
+<span class="nc" id="L88">        this.author = authorValue;</span>
+<span class="nc" id="L89">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L92">        return description;</span>
+    }
+
+    public void setDescription(
+            final String descriptionValue) {
+
+<span class="fc" id="L98">        this.description = descriptionValue;</span>
+<span class="fc" id="L99">    }</span>
+
+    public String getGenre() {
+<span class="nc" id="L102">        return genre;</span>
+    }
+
+    public void setGenre(final String genreValue) {
+<span class="fc" id="L106">        this.genre = genreValue;</span>
+<span class="fc" id="L107">    }</span>
+
+    public String getPublicationDate() {
+<span class="nc" id="L110">        return publicationDate;</span>
+    }
+
+    public void setPublicationDate(
+            final String publicationDateValue) {
+
+<span class="fc" id="L116">        this.publicationDate = publicationDateValue;</span>
+<span class="fc" id="L117">    }</span>
+
+    public String getPrice() {
+<span class="nc" id="L120">        return price;</span>
+    }
+
+    public void setPrice(final String priceValue) {
+<span class="nc" id="L124">        this.price = priceValue;</span>
+<span class="nc" id="L125">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
