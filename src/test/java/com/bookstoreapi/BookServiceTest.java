@@ -32,7 +32,7 @@ public class BookServiceTest {
         b.setTitle("Title");
         b.setDescription("Demo Description");
         b.setGenre("Fiction");
-        b.setPublication_date("2026");
+        b.setPublicationDate("2025");
 
         when(repo.findById(1L)).thenReturn(Optional.of(b));
 

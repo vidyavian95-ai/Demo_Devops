@@ -1,45 +1,126 @@
 package com.bookstoreapi.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+/**
+ * Book entity.
+ */
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "books")
 public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String title;
 
-    // Many Books belong to One Author
     @ManyToOne
-    @JoinColumn(name = "author_id")
     private Author author;
 
-    @Column(nullable = false)
     private String description;
 
-    @Column(nullable = false)
     private String genre;
 
-    @Column(nullable = false)
-    private  String publication_date;
+    private String publicationDate;
 
+    private String price;
+
+    /**
+     * Default constructor.
+     */
+    public Book() {
+    }
+
+    /**
+     * Parameterized constructor.
+     *
+     * @param idValue book id
+     * @param titleValue book title
+     * @param authorValue author object
+     * @param descriptionValue description
+     * @param genreValue genre
+     * @param publicationDateValue publication date
+     * @param priceValue book price
+     */
+    public Book(
+            final Long idValue,
+            final String titleValue,
+            final Author authorValue,
+            final String descriptionValue,
+            final String genreValue,
+            final String publicationDateValue,
+            final String priceValue) {
+
+        this.id = idValue;
+        this.title = titleValue;
+        this.author = authorValue;
+        this.description = descriptionValue;
+        this.genre = genreValue;
+        this.publicationDate = publicationDateValue;
+        this.price = priceValue;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(final Long idValue) {
+        this.id = idValue;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(final String titleValue) {
+        this.title = titleValue;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(final Author authorValue) {
+        this.author = authorValue;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(
+            final String descriptionValue) {
+
+        this.description = descriptionValue;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(final String genreValue) {
+        this.genre = genreValue;
+    }
+
+    public String getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(
+            final String publicationDateValue) {
+
+        this.publicationDate = publicationDateValue;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(final String priceValue) {
+        this.price = priceValue;
+    }
 }

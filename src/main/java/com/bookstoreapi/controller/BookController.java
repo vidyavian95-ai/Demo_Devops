@@ -34,13 +34,27 @@ public class BookController {
         return new ResponseEntity<>(bookList, HttpStatus.OK);
     }
 
-    @PutMapping("{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable("id")
-                                               Long bookId, @RequestBody Book book){
-        book.setId(bookId);
-        Book updateBook = bookService.updateBook(book);
-        return new ResponseEntity<>(updateBook, HttpStatus.OK);
-    }
+ /**
+ * Updates book details.
+ *
+ * @param bookId book id
+ * @param book updated book object
+ * @return updated book response
+ */
+@PutMapping("{id}")
+public ResponseEntity<Book> updateBook(
+        @PathVariable("id") final Long bookId,
+        @RequestBody final Book book) {
+
+    book.setId(bookId);
+
+    Book updatedBook =
+            bookService.updateBook(book);
+
+    return new ResponseEntity<>(
+            updatedBook,
+            HttpStatus.OK);
+}
 
     @DeleteMapping("{id}")
     public ResponseEntity<String> deleteBook(@PathVariable("id") Long bookId){

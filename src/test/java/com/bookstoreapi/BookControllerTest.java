@@ -30,7 +30,7 @@ public class BookControllerTest {
         book.setTitle("Title");
         book.setDescription("Demo Description");
         book.setGenre("Technology");
-        book.setPublication_date("2026");
+        book.setPublicationDate("2025");
     
         given(service.getBookById(1L)).willReturn(book);
     

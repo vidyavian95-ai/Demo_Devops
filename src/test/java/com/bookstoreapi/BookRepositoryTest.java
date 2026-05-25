@@ -17,16 +17,15 @@ public class BookRepositoryTest {
     @Test
     void saveAndFind() {
 
-        Book b = new Book(
-                null,
-                "Title",
-                null,
-                "Description",
-                "Fiction",
-                "2026"
-        );
-
-        Book saved = repo.save(b);
+        Book book = new Book(
+            null,
+            "Title",
+            null,
+            "Java Description",
+            "Programming",
+            "2025",
+            "500");
+        Book saved = repo.save(book);
 
         var found = repo.findById(saved.getId());
 

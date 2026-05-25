@@ -2,23 +2,25 @@ package com.bookstoreapi.implementation;
 
 import com.bookstoreapi.entity.Order;
 import com.bookstoreapi.repository.OrderRepository;
-import com.bookstoreapi.service.BillingService;
+import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
+@Service
 public class CustomerImplementation {
 
+    private final OrderRepository orderRepository;
 
-    private OrderRepository orderRepository;
+    public CustomerImplementation(
+            final OrderRepository orderRepository) {
 
-    public Order createOrder(Order order){
+        this.orderRepository = orderRepository;
+    }
+
+    public Order createOrder(final Order order) {
         return orderRepository.save(order);
     }
 
-    public Order findOrderByCustomerId(Long orderId){
-        Optional<Order> optionalOrder =  orderRepository.findById(orderId);
-        return optionalOrder.get();
+    public Order findOrderByCustomerId(final Long orderId) {
+        return orderRepository.findById(orderId)
+                .orElse(null);
     }
-
-
 }

@@ -50,10 +50,9 @@ public class AuthorImplementation implements AuthorService {
     public Author updateAuthor(Author author){
         Author existingAuthor = authorRepository.findById(author.getId()).get();
         existingAuthor.setName(author.getName());
-        existingAuthor.setTitle(author.getTitle());
         existingAuthor.setAddress(author.getAddress());
-        existingAuthor.setPhoneNo(author.getPhoneNo());
         existingAuthor.setBooks(author.getBooks());
+        existingAuthor.setPhone(author.getPhone());
         return authorRepository.save(existingAuthor);
     }
 
