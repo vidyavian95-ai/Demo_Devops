@@ -10,6 +10,7 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
+                credentialsId: 'github-token',
                 url: 'https://github.com/vidyavian95-ai/Demo_Devops.git'
             }
         }
@@ -20,15 +21,9 @@ pipeline {
             }
         }
 
-       // stage('Run Unit Tests') {
-       //     steps {
-       //         bat 'mvn test'
-         //   }
-       // }
-
         stage('Archive JAR') {
             steps {
-                archiveArtifacts artifacts: '*.java', fingerprint: true
+                archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
     }
