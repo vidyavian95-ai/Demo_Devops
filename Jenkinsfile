@@ -8,7 +8,6 @@ pipeline {
 
     environment {
         APP_NAME = "bookstore-api"
-        SONAR_SERVER = "SonarQube"
     }
 
     stages {
@@ -16,8 +15,8 @@ pipeline {
         stage('Checkout Code') {
             steps {
                 git branch: 'main',
-                credentialsId: 'github-token',
-                url: 'https://github.com/vidyavian95-ai/Demo_Devops.git'
+                    credentialsId: 'github-token',
+                    url: 'https://github.com/vidyavian95-ai/Demo_Devops.git'
             }
         }
 
@@ -29,27 +28,44 @@ pipeline {
 
         stage('Build Application') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                bat 'mvn clean compile'
             }
         }
 
         stage('Run Unit Tests') {
             steps {
-                bat 'mvn test'
+                steps {
+                    bat 'mvn test'
+                }
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('SonarQube') {
-
                     bat '''
                     mvn sonar:sonar ^
                     -Dsonar.projectKey=Demo_Devops ^
                     -Dsonar.projectName=Demo_Devops ^
+                    -Dsonar.host.url=http://localhost:9000 ^
+                    -Dsonar.login=%SONAR_AUTH_TOKEN% ^
                     -Dsonar.java.binaries=target/classes
                     '''
                 }
+            }
+        }
+
+        stage('Quality Gate') {
+            steps {
+                timeout(time: 2, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
+        stage('Package Application') {
+            steps {
+                bat 'mvn package -DskipTests'
             }
         }
 
@@ -67,7 +83,6 @@ pipeline {
     }
 
     post {
-
         success {
             echo 'Build completed successfully'
         }
