@@ -34,9 +34,7 @@ pipeline {
 
         stage('Run Unit Tests') {
             steps {
-                steps {
-                    bat 'mvn test'
-                }
+                bat 'mvn test'
             }
         }
 
@@ -48,7 +46,7 @@ pipeline {
                     -Dsonar.projectKey=Demo_Devops ^
                     -Dsonar.projectName=Demo_Devops ^
                     -Dsonar.host.url=http://localhost:9000 ^
-                    -Dsonar.login=%SONAR_AUTH_TOKEN% ^
+                    -Dsonar.login=%SONAR_TOKEN% ^
                     -Dsonar.java.binaries=target/classes
                     '''
                 }
